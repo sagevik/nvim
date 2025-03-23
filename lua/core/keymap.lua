@@ -66,3 +66,7 @@ vim.keymap.set("v", ">", ">gv", opts)
 -- Move selected text up and down with shift + j/k
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Navigate quickfix list
+vim.keymap.set("n", "<A-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<A-k>", "<cmd>cprev<CR>")
