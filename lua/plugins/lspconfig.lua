@@ -268,5 +268,26 @@ return {
 				end,
 			},
 		})
+		require("lspconfig").pylsp.setup({
+			settings = {
+				pylsp = {
+					plugins = {
+						flake8 = { enabled = false },
+						pyflakes = { enabled = false },
+						jedi_completion = { enabled = false },
+						mccabe = { enabled = false },
+						ruff = {
+							enabled = true,
+							ignore = { "E722" },
+						},
+						pycodestyle = {
+							enabled = true,
+							ignore = { "W391", "E501", "E722" },
+							-- maxLineLength = 120,
+						}, -- Keep PEP 8 checks (optional)
+					},
+				},
+			},
+		})
 	end,
 }
