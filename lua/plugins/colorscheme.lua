@@ -4,6 +4,7 @@ return {
 	config = function()
 		---@diagnostic disable-next-line: missing-fields
 		require("kanagawa").setup({
+			transparent = true,
 			styles = {
 				comments = { italic = false },
 			},
