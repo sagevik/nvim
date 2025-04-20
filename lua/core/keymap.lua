@@ -1,5 +1,4 @@
--- Set <space> as the leader key
--- See `:help mapleader`
+-- Set <space> as the leader key (See `:help mapleader`)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -7,6 +6,8 @@ local opts = { noremap = true, silent = true }
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+-- vim.keymap.set("n", "<C-g>", "<Nop>", { silent = true })
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -44,6 +45,12 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- Switch buffer with shift + h/l
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Go to next buffer" })
 vim.keymap.set("n", "<S-h>", ":bprev<CR>", { desc = "Go to previous buffer" })
+
+-- Delete single character without copying into register
+vim.keymap.set("n", "x", '"_x', opts)
+
+-- Keep last yanked when pasting
+vim.keymap.set("v", "p", '"_dP', opts)
 
 -- Vertical scroll and center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
