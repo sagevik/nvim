@@ -34,7 +34,9 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			-- Conform can also run multiple formatters sequentially
-			-- python = { "isort", "black" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
+			go = { "goimports", "gofmt" },
 			python = { "ruff_format", "ruff_organize_imports" },
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
