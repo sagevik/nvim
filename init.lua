@@ -32,6 +32,7 @@ require("lazy").setup({
 	require("plugins.vim-sleuth"),
 	require("plugins.which-key"),
 	require("plugins.telescope"),
+	require("plugins.fzf-lua"),
 	-- LSP Plugins
 	require("plugins.lazydev"),
 	require("plugins.lspconfig"),
@@ -50,6 +51,7 @@ require("lazy").setup({
 	require("plugins.autopairs"),
 	require("plugins.neo-tree"),
 	require("plugins.gitsigns"), -- adds gitsigns recommend keymaps
+	require("plugins.vim-tidal"),
 
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
 	-- Or use telescope!
