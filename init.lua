@@ -32,6 +32,7 @@ require("lazy").setup({
 	require("plugins.vim-sleuth"),
 	require("plugins.which-key"),
 	require("plugins.telescope"),
+	require("plugins.oil"),
 	require("plugins.fzf-lua"),
 	-- LSP Plugins
 	require("plugins.lazydev"),
