@@ -34,6 +34,7 @@ require("lazy").setup({
 	require("plugins.telescope"),
 	require("plugins.oil"),
 	require("plugins.fzf-lua"),
+	require("plugins.zen-mode"),
 	-- LSP Plugins
 	require("plugins.lazydev"),
 	require("plugins.lspconfig"),
