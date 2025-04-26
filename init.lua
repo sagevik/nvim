@@ -45,7 +45,7 @@ require("lazy").setup({
 	require("plugins.colorscheme"),
 	require("plugins.todo-comments"),
 	require("plugins.mini"),
-
+	require("plugins.undotree"),
 	require("plugins.treesitter"),
 
 	require("plugins.debug"),
