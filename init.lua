@@ -41,6 +41,7 @@ require("lazy").setup({
 	--
 	require("plugins.autoformat"),
 	require("plugins.autocompletion"),
+	require("plugins.windsurf"),
 
 	require("plugins.colorscheme"),
 	require("plugins.todo-comments"),
