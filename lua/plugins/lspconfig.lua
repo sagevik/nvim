@@ -254,6 +254,7 @@ return {
 			"stylua", -- Used to format Lua code
 			"ruff",
 			"pyright",
+			"pylsp",
 			"gopls",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -292,22 +293,6 @@ return {
 					},
 				},
 			},
-		})
-		require("blink.cmp").setup({
-			window = {
-				completion = {
-					border = "single", -- Keep rounded borders
-					winhighlight = "Normal:Normal,FloatBorder:FloatBorder", -- Keep as-is (black bg, yellow text)
-				},
-				documentation = {
-					border = "rounded",
-					winhighlight = "Normal:Normal,FloatBorder:FloatBorder", -- Keep as-is (black bg, yellow text)
-					max_width = 80,
-					max_height = 20,
-					auto_show = true,
-				},
-			},
-			-- Other settings...
 		})
 	end,
 }
