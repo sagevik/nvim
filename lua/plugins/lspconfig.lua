@@ -208,7 +208,7 @@ return {
 			-- clangd = {},
 			hls = {},
 			gopls = {},
-			-- pyright = {},
+			pyright = {},
 			ruff = {},
 			-- rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -252,6 +252,9 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
+			"ruff",
+			"pyright",
+			"gopls",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -282,7 +285,7 @@ return {
 							ignore = { "E722" },
 						},
 						pycodestyle = {
-							enabled = true,
+							enabled = false,
 							ignore = { "W391", "E501", "E722" },
 							-- maxLineLength = 120,
 						}, -- Keep PEP 8 checks (optional)
