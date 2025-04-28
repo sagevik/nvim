@@ -103,6 +103,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			})
 		end, { desc = "[S]earch [/] in Open Files" })
 
+		vim.keymap.set("n", "<leader>sW", function()
+			require("telescope.builtin").grep_string({ cwd = require("telescope.utils").buffer_dir() })
+		end, { desc = "[S]earch [W]ord in buffer dir" })
+
 		-- Shortcut for searching your Neovim configuration files
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
