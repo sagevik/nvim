@@ -23,8 +23,8 @@ return {
 			require("vague").setup({
 				transparent = true,
 			})
-			vim.cmd("colorscheme vague")
-			vim.cmd(":hi statusline guibg=NONE")
+			-- vim.cmd.colorscheme("vague")
+			-- vim.cmd(":hi statusline guibg=NONE")
 		end,
 	},
 	{
@@ -37,7 +37,7 @@ return {
 					italic = false,
 				},
 			})
-			vim.cmd("colorscheme rose-pine")
+			-- vim.cmd.colorscheme("rose-pine")
 		end,
 	},
 }
