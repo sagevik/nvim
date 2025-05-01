@@ -1,1 +1,2 @@
-require("sagevik_telescope")
+require("sagevik")
+--require("sagevik_telescope")
