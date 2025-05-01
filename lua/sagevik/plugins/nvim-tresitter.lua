@@ -5,8 +5,20 @@ return {
 		local configs = require("nvim-treesitter.configs")
 		configs.setup({
 			ensure_installed = {
-                "c", "html", "lua", "python", "go", "vim", "vimdoc"
-            },
+				"bash",
+				"c",
+				"diff",
+				"go",
+				"html",
+				"lua",
+				"luadoc",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"query",
+				"vim",
+				"vimdoc",
+			},
 			auto_install = true,
 			sync_install = false,
 			highlight = { enable = true },
@@ -18,7 +30,6 @@ return {
 					node_incremental = "<Enter>",
 					scope_incremental = false,
 					node_decremental = "<Backspace>",
-
 				},
 			},
 		})
