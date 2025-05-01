@@ -4,6 +4,10 @@ vim.g.maplocalleader = " "
 
 local opts = { noremap = true, silent = true }
 
+vim.keymap.set("n", "gl", function()
+	vim.diagnostic.open_float()
+end, { desc = "Open diagnostics in float" })
+
 -- Disable the spacebar key's default behavior in Normal and Visual modes
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 

@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
-        spec = { import = "sagevik.plugins" },
+        spec = { import = "sagevik_telescope.plugins" },
         change_detection = { enabled = false },
     }
 )
