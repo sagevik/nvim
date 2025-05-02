@@ -12,6 +12,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.g.enabled_plugins = {
+	["windsurf"] = false,
+}
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

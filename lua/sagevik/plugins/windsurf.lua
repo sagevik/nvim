@@ -1,3 +1,8 @@
+-- If the plugin is disabled, return an empty table
+if not vim.g.enabled_plugins["windsurf"] then
+	return {}
+end
+
 return {
 	"Exafunction/windsurf.nvim",
 	dependencies = {
