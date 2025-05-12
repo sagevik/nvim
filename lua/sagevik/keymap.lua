@@ -8,13 +8,14 @@ vim.g.maplocalleader = " "
 local opts = { noremap = true, silent = true }
 
 -- vim.keymap.set('n', "-", "<cmd>Oil --float<CR>", { desc="Open in Oil" })
-vim.keymap.set('n', "gl", function() vim.diagnostic.open_float() end, { desc="Open diagnostics in float" })
+vim.keymap.set("n", "gl", function()
+	vim.diagnostic.open_float()
+end, { desc = "Open diagnostics in float" })
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- vim.keymap.set("n", "<C-g>", "<Nop>", { silent = true })
-
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -47,6 +48,10 @@ vim.keymap.set("n", "x", '"_x', opts)
 
 -- Keep last yanked when pasting
 vim.keymap.set("v", "p", '"_dP', opts)
+
+-- Paste yanked above or below line
+vim.keymap.set("n", "ap", "<cmd>put!<CR>", opts)
+vim.keymap.set("n", "bp", "<cmd>put<CR>", opts)
 
 -- Vertical scroll and center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
