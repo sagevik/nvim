@@ -1,3 +1,8 @@
+-- If the plugin is disabled, return an empty table
+if not vim.g.enabled_plugins["colorscheme"] then
+	return {}
+end
+
 return {
 	{
 		"rebelot/kanagawa.nvim",

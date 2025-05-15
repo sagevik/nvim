@@ -1,3 +1,8 @@
+-- If the plugin is disabled, return an empty table
+if not vim.g.enabled_plugins["lazydev"] then
+	return {}
+end
+
 return {
 
 	-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins

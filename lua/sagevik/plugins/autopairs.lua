@@ -1,6 +1,10 @@
+-- If the plugin is disabled, return an empty table
+if not vim.g.enabled_plugins["autopairs"] then
+	return {}
+end
+
 -- autopairs
 -- https://github.com/windwp/nvim-autopairs
-
 return {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",

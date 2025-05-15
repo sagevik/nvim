@@ -1,10 +1,15 @@
+-- If the plugin is disabled, return an empty table
+if not vim.g.enabled_plugins["nvim-tresitter-textobjects"] then
+	return {}
+end
+
 return {
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	init = function()
-		local config = require'nvim-treesitter.configs'
+		local config = require("nvim-treesitter.configs")
 		config.setup({
 			textobjects = {
 				select = {
@@ -32,9 +37,9 @@ return {
 					-- and should return the mode ('v', 'v', or '<c-v>') or a table
 					-- mapping query_strings to modes.
 					selection_modes = {
-						['@parameter.outer'] = 'v', -- charwise
-						['@function.outer'] = 'v', -- linewise
-						['@class.outer'] = '<c-v>', -- blockwise
+						["@parameter.outer"] = "v", -- charwise
+						["@function.outer"] = "v", -- linewise
+						["@class.outer"] = "<c-v>", -- blockwise
 					},
 					-- if you set this to `true` (default is `false`) then any textobject is
 					-- extended to include preceding or succeeding whitespace. succeeding
@@ -48,6 +53,6 @@ return {
 					include_surrounding_whitespace = true,
 				},
 			},
-		});
-	end
+		})
+	end,
 }

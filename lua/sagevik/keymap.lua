@@ -49,9 +49,11 @@ vim.keymap.set("n", "x", '"_x', opts)
 -- Keep last yanked when pasting
 vim.keymap.set("v", "p", '"_dP', opts)
 
--- Paste yanked above or below line
-vim.keymap.set("n", "ap", "<cmd>put!<CR>", opts)
+-- Keep last yanked when pasting
+-- vim.keymap.set("n", "<leader>p", "<cmd>put<CR>", opts)
+-- vim.keymap.set("n", "<leader>P", "<cmd>put!<CR>", opts)
 vim.keymap.set("n", "bp", "<cmd>put<CR>", opts)
+vim.keymap.set("n", "ap", "<cmd>put!<CR>", opts)
 
 -- Vertical scroll and center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
@@ -78,3 +80,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Navigate quickfix list
 vim.keymap.set("n", "<A-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<A-k>", "<cmd>cprev<CR>")
+
+-- Clear stuck previews and restore LSP diagnostics
+vim.keymap.set("n", "<leader>cp", function()
+	vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)
+	vim.diagnostic.show(nil, 0, nil, { virtual_text = true })
+end, { desc = "Clear stuck LSP previews and restore diagnostics" })
