@@ -44,6 +44,24 @@ return {
 			desc = "[F]ind [C]onfig",
 		},
 		{
+			"<leader>fs",
+			function()
+				vim.api.nvim_command('normal! "zy')
+				require("fzf-lua").lgrep_curbuf({ search = vim.fn.getreg("z") })
+			end,
+			mode = "v", -- Specify visual mode
+			desc = "[F]ind [S]election (current buffer)",
+		},
+		{
+			"<leader>fS",
+			function()
+				vim.api.nvim_command('normal! "zy')
+				require("fzf-lua").live_grep({ search = vim.fn.getreg("z") })
+			end,
+			mode = "v", -- Specify visual mode
+			desc = "[F]ind [S]election (all files)",
+		},
+		{
 			"<leader>fb",
 			function()
 				require("fzf-lua").builtin()
