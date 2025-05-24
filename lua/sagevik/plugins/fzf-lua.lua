@@ -3,6 +3,8 @@ if not vim.g.enabled_plugins["fzf-lua"] then
 	return {}
 end
 
+local utils = require("sagevik.utils")
+
 return {
 	"ibhagwan/fzf-lua",
 	-- optional for icon support
@@ -17,6 +19,16 @@ return {
 						["ctrl-q"] = "select-all+accept",
 					},
 				},
+			},
+			winopts = {
+				preview = {
+					layout = "vertical",
+					vertical = "right:50%",
+				},
+			},
+			grep = {
+				rg_opts = "--smart-case --multiline --column",
+				silent = true,
 			},
 		})
 	end,
@@ -46,20 +58,20 @@ return {
 		{
 			"<leader>fs",
 			function()
-				vim.api.nvim_command('normal! "zy')
-				require("fzf-lua").lgrep_curbuf({ search = vim.fn.getreg("z") })
+				local selection = utils.get_visual_selection()
+				require("fzf-lua").lgrep_curbuf({ search = selection[1] })
 			end,
-			mode = "v", -- Specify visual mode
+			mode = "v", --visual mode
 			desc = "[F]ind [S]election (current buffer)",
 		},
 		{
 			"<leader>fS",
 			function()
-				vim.api.nvim_command('normal! "zy')
-				require("fzf-lua").live_grep({ search = vim.fn.getreg("z") })
+				local selection = utils.get_visual_selection()
+				require("fzf-lua").live_grep({ search = table.concat(selection, "\n") })
 			end,
-			mode = "v", -- Specify visual mode
-			desc = "[F]ind [S]election (all files)",
+			mode = "v", --visual mode
+			desc = "[F]ind [S]election (current project)",
 		},
 		{
 			"<leader>fb",
