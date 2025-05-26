@@ -212,7 +212,23 @@ return {
 			marksman = {},
 			-- clangd = {},
 			gopls = {},
-			pyright = {},
+			ruff = {},
+			pylsp = {
+				settings = {
+					pylsp = {
+						plugins = {
+							jedi_completion = { enabled = false },
+							pycodestyle = { enabled = false },
+							pyflakes = { enabled = false },
+							flake8 = { enabled = false },
+							pylint = { enabled = false },
+							rope_autoimport = { enabled = false },
+							rope_completion = { enabled = false },
+						},
+						configurationSources = { "ruff" },
+					},
+				},
+			},
 			-- rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
@@ -254,6 +270,7 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			-- "python-lsp-server",
 			"stylua", -- Used to format Lua code
 			"prettierd", -- Used to format javascript/typescript code
 			"ruff", -- Used to format python code
