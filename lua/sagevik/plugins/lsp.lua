@@ -212,23 +212,7 @@ return {
 			marksman = {},
 			-- clangd = {},
 			gopls = {},
-			ruff = {},
-			pylsp = {
-				settings = {
-					pylsp = {
-						plugins = {
-							jedi_completion = { enabled = false },
-							pycodestyle = { enabled = false },
-							pyflakes = { enabled = false },
-							flake8 = { enabled = false },
-							pylint = { enabled = false },
-							rope_autoimport = { enabled = false },
-							rope_completion = { enabled = false },
-						},
-						configurationSources = { "ruff" },
-					},
-				},
-			},
+			pylsp = {},
 			-- rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
@@ -289,6 +273,26 @@ return {
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					require("lspconfig")[server_name].setup(server)
 				end,
+			},
+		})
+
+		vim.lsp.config("pylsp", {
+			capabilities = capabilities, -- Use the same capabilities as other servers
+			settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							enabled = true,
+							maxLineLength = 120,
+						},
+						pyflakes = { enabled = false },
+						flake8 = { enabled = false },
+						pylint = { enabled = false },
+						rope_autoimport = { enabled = false },
+						rope_completion = { enabled = false },
+						jedi_completion = { enabled = false },
+					},
+				},
 			},
 		})
 	end,
