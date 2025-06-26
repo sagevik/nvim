@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["project"] then
-	return {}
-end
-
 return {
 	"ahmedkhalf/project.nvim",
 	init = function()

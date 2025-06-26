@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["debug"] then
-	return {}
-end
-
 -- debug.lua
 --
 -- Shows how to use the DAP plugin to debug your code.

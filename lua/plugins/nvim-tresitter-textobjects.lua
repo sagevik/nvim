@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["nvim-tresitter-textobjects"] then
-	return {}
-end
-
 return {
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	dependencies = {

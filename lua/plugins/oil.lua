@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["oil"] then
-	return {}
-end
-
 return {
 	"stevearc/oil.nvim",
 	---@module 'oil'

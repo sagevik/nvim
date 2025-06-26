@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["mini"] then
-	return {}
-end
-
 return {
 	-- Collection of various small independent plugins/modules
 	"echasnovski/mini.nvim",

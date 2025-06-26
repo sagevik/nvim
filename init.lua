@@ -1,2 +1,68 @@
-require("sagevik")
---require("sagevik_telescope")
+require("options")
+require("keymap")
+require("utils")
+
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("HighlightOnYank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
+})
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- require("lazy").setup({
+-- 	spec = { import = "sagevik.plugins" },
+-- 	change_detection = { enabled = false },
+-- })
+
+require("lazy").setup({
+	require("plugins.autopairs"),
+	require("plugins.blink-cmp"),
+	require("plugins.colorscheme"),
+	require("plugins.conform"),
+	require("plugins.debug"),
+	require("plugins.dressing"),
+	require("plugins.fzf-lua"),
+	require("plugins.gitsigns"),
+	require("plugins.hardtime"),
+	require("plugins.lazydev"),
+	require("plugins.lint"),
+	require("plugins.lsp"),
+	require("plugins.mini"),
+	require("plugins.neotree"),
+	require("plugins.nvim-tresitter-textobjects"),
+	require("plugins.nvim-tresitter"),
+	require("plugins.oil"),
+	require("plugins.peek"),
+	require("plugins.project"),
+	require("plugins.render-markdown"),
+	require("plugins.statusline"),
+	-- require("plugins.telescope"),
+	require("plugins.todo-comments"),
+	require("plugins.undotree"),
+	require("plugins.vim-sleuth"),
+	require("plugins.vim-tidal"),
+	require("plugins.which-key"),
+	require("plugins.windsurf"),
+	require("plugins.zenmode"),
+})

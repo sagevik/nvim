@@ -12,36 +12,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.g.enabled_plugins = {
-	["autopairs"] = true,
-	["blink-cmp"] = true,
-	["colorscheme"] = true,
-	["conform"] = true,
-	["debug"] = true,
-	["dressing"] = true,
-	["fzf-lua"] = true,
-	["gitsigns"] = true,
-	["lazydev"] = true,
-	["lint"] = true,
-	["lsp"] = true,
-	["mini"] = true,
-	["neotree"] = true,
-	["nvim-tresitter-textobjects"] = true,
-	["nvim-tresitter"] = true,
-	["oil"] = true,
-	["peek"] = true,
-	["project"] = true,
-	["render-markdown"] = true,
-	["statusline"] = true,
-	["todo-comments"] = true,
-	["undotree"] = true,
-	["vim-sleuth"] = true,
-	["vim-tidal"] = true,
-	["which-key"] = true,
-	["windsurf"] = true,
-	["zenmode"] = true,
-}
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -58,4 +28,36 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = { import = "sagevik.plugins" },
 	change_detection = { enabled = false },
+})
+
+require("lazy").setup({
+	require("autopairs"),
+	require("blink-cmp"),
+	require("colorscheme"),
+	require("conform"),
+	require("debug"),
+	require("dressing"),
+	require("fzf-lua"),
+	require("gitsigns"),
+	require("hardtime"),
+	require("lazydev"),
+	require("lint"),
+	require("lsp"),
+	require("mini"),
+	require("neotree"),
+	require("nvim-tresitter-textobjects"),
+	require("nvim-tresitter"),
+	require("oil"),
+	require("peek"),
+	require("project"),
+	require("render-markdown"),
+	require("statusline"),
+	require("telescope"),
+	require("todo-comments"),
+	require("undotree"),
+	require("vim-sleuth"),
+	require("vim-tidal"),
+	require("which-key"),
+	require("windsurf"),
+	require("zenmode"),
 })

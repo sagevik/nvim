@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["neotree"] then
-	return {}
-end
-
 -- Neo-tree is a Neovim plugin to browse the file system
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 

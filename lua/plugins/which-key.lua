@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["which-key"] then
-	return {}
-end
-
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",

@@ -1,8 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["lsp"] then
-	return {}
-end
-
 return {
 	-- Main LSP Configuration
 	"neovim/nvim-lspconfig",
@@ -19,39 +14,41 @@ return {
 			"j-hui/fidget.nvim",
 			opts = {
 				progress = {
+					poll_rate = 0, -- Poll for progress updates (0 = default, increase to reduce frequency)
+					suppress_on_insert = true, -- Suppress progress in insert mode
+					ignore_done_already = true, -- Ignore tasks that complete quickly
+					ignore_empty_message = true, -- Skip empty progress messages
 					display = {
-						done_icon = "✓", -- Icon shown when all LSP progress tasks are complete
+						done_icon = "✓",
+						done_ttl = 3, -- Seconds to keep completed tasks visible
+						progress_ttl = 5, -- Seconds to keep in-progress tasks visible
+						render_limit = 2, -- Limit number of simultaneous progress messages
+						-- Filter specific LSP clients (e.g., only show pylsp)
+						overrides = {
+							-- pylsp = {
+							-- 	name = "pylsp",
+							-- 	priority = 100, -- Higher priority for pylsp
+							-- },
+						},
+					},
+					lsp = {
+						progress_ringbuf_size = 512, -- Buffer size for progress messages (smaller reduces noise)
 					},
 				},
 				notification = {
+					poll_rate = 10, -- Check for notifications less frequently
+					filter = vim.log.levels.INFO, -- Show INFO and above (skip DEBUG, TRACE)
+					override_vim_notify = true, -- Replace vim.notify with fidget
 					window = {
-						winblend = 0, -- Background color opacity in the notification window
+						winblend = 0,
+						relative = "editor", -- Anchor notifications to editor
 					},
 				},
 			},
 		},
 	},
 	config = function()
-		-- Brief aside: **What is LSP?**
-		--
-		-- LSP is an initialism you've probably heard, but might not understand what it is.
-		--
-		-- LSP stands for Language Server Protocol. It's a protocol that helps editors
-		-- and language tooling communicate in a standardized fashion.
-		--
-		-- In general, you have a "server" which is some tool built to understand a particular
-		-- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-		-- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-		-- processes that communicate with some "client" - in this case, Neovim!
-		--
-		-- LSP provides Neovim with features like:
-		--  - Go to definition
-		--  - Find references
-		--  - Autocompletion
-		--  - Symbol Search
-		--  - and more!
-		--
-		-- Thus, Language Servers are external tools that must be installed separately from
+		-- Language Servers are external tools that must be installed separately from
 		-- Neovim. This is where `mason` and related plugins come into play.
 		--
 		-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
@@ -75,7 +72,6 @@ return {
 				end
 
 				-- Rename the variable under your cursor.
-				--  Most Language Servers support renaming across files, etc.
 				map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
@@ -86,7 +82,6 @@ return {
 				map("grr", require("fzf-lua").lsp_references, "[G]oto [R]eferences")
 
 				-- Jump to the implementation of the word under your cursor.
-				--  Useful when your language has ways of declaring types without an actual implementation.
 				map("gri", require("fzf-lua").lsp_implementations, "[G]oto [I]mplementation")
 
 				-- Jump to the definition of the word under your cursor.
@@ -208,9 +203,10 @@ return {
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
 		--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
 		--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-		local nvim_capabilities = vim.lsp.protocol.make_client_capabilities()
-		local capabilities = require("blink.cmp").get_lsp_capabilities(nvim_capabilities)
-		-- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+		-- local nvim_capabilities = vim.lsp.protocol.make_client_capabilities()
+		-- local capabilities = require("blink.cmp").get_lsp_capabilities(nvim_capabilities)
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		-- local capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		-- Enable the following language servers
 		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -226,7 +222,8 @@ return {
 			marksman = {},
 			-- clangd = {},
 			gopls = {},
-			pylsp = {},
+			-- pylsp = {},
+			-- pyright = {},
 			-- rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
@@ -268,10 +265,12 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			-- "python-lsp-server",
+			"python-lsp-server",
+			"pyright",
 			"stylua", -- Used to format Lua code
 			"prettierd", -- Used to format javascript/typescript code
-			"ruff", -- Used to format python code
+			-- "ruff", -- Used to format python code
+			-- "mypy",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -289,8 +288,21 @@ return {
 				end,
 			},
 		})
+		local disable_hover = function(client, bufnr)
+			client.server_capabilities.hoverProvider = false
+		end
+		vim.lsp.config("pyright", {
+			-- on_attach = disable_hover,
+			capabilities = capabilities,
+			filetypes = { "python" },
+			settings = {
+				-- Use Ruff's import organizer
+				disableOrganizeImports = false,
+			},
+		})
 
 		vim.lsp.config("pylsp", {
+			on_attach = disable_hover,
 			capabilities = capabilities, -- Use the same capabilities as other servers
 			settings = {
 				pylsp = {
@@ -302,9 +314,9 @@ return {
 						pyflakes = { enabled = false },
 						flake8 = { enabled = false },
 						pylint = { enabled = false },
-						rope_autoimport = { enabled = false },
-						rope_completion = { enabled = false },
-						jedi_completion = { enabled = false },
+						rope_autoimport = { enabled = true },
+						rope_completion = { enabled = true },
+						jedi_completion = { enabled = true },
 					},
 				},
 			},

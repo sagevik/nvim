@@ -1,34 +1,3 @@
--- If the plugin is disabled, return an empty table
-if not vim.g.enabled_plugins["conform"] then
-	return {}
-end
-
--- return {
---     "stevearc/conform.nvim",
---     opts = {
---         formatters_by_ft = {
---             lua = { "stylua" },
---             go = { "gofmt" },
---             -- Conform will run multiple formatters sequentially
---             python = { "ruff" },
---             -- You can customize some of the format options for the filetype (:help conform.format)
---             rust = { "rustfmt", lsp_format = "fallback" },
---             -- Conform will run the first available formatter
---             javascript = { "prettierd", "prettier", stop_after_first = true },
---         },
---         format_on_save = {
---             timeout_ms = 500,
---             lsp_format = "fallback",
---         },
---         vim.keymap.set("n", "<leader>cf", function()
---             require("conform").format({
---                 lsp_format = "fallback",
---             })
---         end, { desc = " [C]ode [F]ormat" }),
---     },
--- }
---
-
 return {
 	-- Autoformat
 	"stevearc/conform.nvim",
@@ -68,7 +37,7 @@ return {
 			sh = { "shfmt" },
 			bash = { "shfmt" },
 			go = { "goimports", "gofmt" },
-			python = { "ruff_format", "ruff_organize_imports" },
+			-- python = { "ruff_format", "ruff_organize_imports" },
 			-- rust = { "rustfmt" }, -- Deprecated, should be installed via rustup
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
