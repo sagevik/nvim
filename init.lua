@@ -1,20 +1,7 @@
 require("options")
 require("keymap")
 require("utils")
-
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
-
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("HighlightOnYank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
-})
+require("autocommands")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -30,12 +17,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- require("lazy").setup({
--- 	spec = { import = "sagevik.plugins" },
--- 	change_detection = { enabled = false },
--- })
-
 require("lazy").setup({
+	change_detection = { enabled = false },
 	require("plugins.autopairs"),
 	require("plugins.blink-cmp"),
 	require("plugins.colorscheme"),
