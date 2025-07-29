@@ -37,7 +37,7 @@ return {
 			sh = { "shfmt" },
 			bash = { "shfmt" },
 			go = { "goimports", "gofmt" },
-			-- python = { "ruff_format", "ruff_organize_imports" },
+			python = { "ruff_format", "ruff_organize_imports" },
 			-- rust = { "rustfmt" }, -- Deprecated, should be installed via rustup
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
