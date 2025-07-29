@@ -87,6 +87,7 @@ return {
 				-- Jump to the definition of the word under your cursor.
 				--  This is where a variable was first declared, or where a function is defined, etc.
 				--  To jump back, press <C-t>.
+				-- map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 				map("grd", require("fzf-lua").lsp_definitions, "[G]oto [D]efinition")
 
 				-- WARN: This is not Goto Definition, this is Goto Declaration.
@@ -269,7 +270,7 @@ return {
 			"pyright",
 			"stylua", -- Used to format Lua code
 			"prettierd", -- Used to format javascript/typescript code
-			-- "ruff", -- Used to format python code
+			"ruff", -- Used to format python code
 			-- "mypy",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -302,7 +303,7 @@ return {
 		})
 
 		vim.lsp.config("pylsp", {
-			on_attach = disable_hover,
+			-- on_attach = disable_hover,
 			capabilities = capabilities, -- Use the same capabilities as other servers
 			settings = {
 				pylsp = {
@@ -314,9 +315,10 @@ return {
 						pyflakes = { enabled = false },
 						flake8 = { enabled = false },
 						pylint = { enabled = false },
-						rope_autoimport = { enabled = true },
-						rope_completion = { enabled = true },
-						jedi_completion = { enabled = true },
+						rope_autoimport = { enabled = false },
+						rope_completion = { enabled = false },
+						jedi_completion = { enabled = false },
+						jedi_definition = { enabled = false },
 					},
 				},
 			},
