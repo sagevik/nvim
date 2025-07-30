@@ -310,6 +310,7 @@ return {
 					plugins = {
 						pycodestyle = {
 							enabled = true,
+							ignore = { "E203" },
 							maxLineLength = 120,
 						},
 						pyflakes = { enabled = false },
