@@ -299,11 +299,12 @@ return {
 			settings = {
 				-- Use Ruff's import organizer
 				disableOrganizeImports = false,
+				watch = true,
 			},
 		})
 
 		vim.lsp.config("pylsp", {
-			-- on_attach = disable_hover,
+			on_attach = disable_hover,
 			capabilities = capabilities, -- Use the same capabilities as other servers
 			settings = {
 				pylsp = {
