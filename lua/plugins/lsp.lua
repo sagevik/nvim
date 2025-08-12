@@ -292,8 +292,13 @@ return {
 		local disable_hover = function(client, bufnr)
 			client.server_capabilities.hoverProvider = false
 		end
+
+		local disable_reference_provider = function(client, bufnr)
+			client.server_capabilities.referencesProvider = false
+		end
+
 		vim.lsp.config("pyright", {
-			-- on_attach = disable_hover,
+			on_attach = disable_hover,
 			capabilities = capabilities,
 			filetypes = { "python" },
 			settings = {
@@ -304,7 +309,10 @@ return {
 		})
 
 		vim.lsp.config("pylsp", {
-			on_attach = disable_hover,
+			on_attach = {
+				-- disable_hover,
+				disable_reference_provider,
+			},
 			capabilities = capabilities, -- Use the same capabilities as other servers
 			settings = {
 				pylsp = {
