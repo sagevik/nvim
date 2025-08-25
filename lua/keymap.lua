@@ -59,6 +59,10 @@ vim.keymap.set("n", "ap", "<cmd>put!<CR>", opts)
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
+-- Jump and center
+vim.keymap.set("n", "<C-o>", "<C-o>zz", opts)
+vim.keymap.set("n", "<C-i>", "<C-i>zz", opts)
+
 -- Find and center
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -72,6 +76,9 @@ vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
+
+-- Better J behavior
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
 -- Move selected text up and down with shift + j/k
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
