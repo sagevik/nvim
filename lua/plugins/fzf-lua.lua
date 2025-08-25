@@ -15,12 +15,6 @@ return {
 					},
 				},
 			},
-			winopts = {
-				preview = {
-					layout = "vertical",
-					vertical = "right:50%",
-				},
-			},
 			grep = {
 				rg_opts = "--smart-case --multiline --column",
 				silent = true,
@@ -149,6 +143,14 @@ return {
 			end,
 			-- desc = "[F]ind [R]esume",
 			desc = "[S]earch [R]esume",
+		},
+		{
+			-- "<leader>fr",
+			"<leader>s.",
+			function()
+				require("fzf-lua").oldfiles()
+			end,
+			desc = "[S]earch Recent Files",
 		},
 		{
 			-- "<leader>fo",
