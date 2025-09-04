@@ -44,5 +44,14 @@ return {
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 		},
+		formatters = {
+			ruff_format = {
+				prepend_args = { "--line-length", "120" },
+			},
+			ruff_organize_imports = {
+				-- No need for line-length here, as it only affects imports
+				-- But you can add other ruff-specific args if needed
+			},
+		},
 	},
 }
