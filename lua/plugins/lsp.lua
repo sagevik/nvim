@@ -297,6 +297,10 @@ return {
 			client.server_capabilities.referencesProvider = false
 		end
 
+		local disable_rename_provider = function(client, bufnr)
+			client.server_capabilities.renameProvider = false
+		end
+
 		vim.lsp.config("pyright", {
 			on_attach = disable_hover,
 			capabilities = capabilities,
@@ -312,6 +316,7 @@ return {
 			on_attach = {
 				-- disable_hover,
 				disable_reference_provider,
+				disable_rename_provider,
 			},
 			capabilities = capabilities, -- Use the same capabilities as other servers
 			settings = {
