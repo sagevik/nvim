@@ -6,7 +6,7 @@ return {
 				compile = true,
 				transparent = true,
 			})
-			vim.cmd("colorscheme kanagawa-dragon")
+			-- vim.cmd("colorscheme kanagawa-dragon")
 		end,
 		build = function()
 			vim.cmd("KanagawaCompile")
@@ -18,8 +18,8 @@ return {
 			require("vague").setup({
 				transparent = true,
 			})
-			-- vim.cmd.colorscheme("vague")
-			-- vim.cmd(":hi statusline guibg=NONE")
+			vim.cmd.colorscheme("vague")
+			vim.cmd(":hi statusline guibg=NONE")
 		end,
 	},
 	{
