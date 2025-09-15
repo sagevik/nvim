@@ -31,6 +31,7 @@ require("lazy").setup({
 	require("plugins.lazydev"),
 	require("plugins.lint"),
 	require("plugins.lsp"),
+	require("plugins.lsp-signature"),
 	require("plugins.mini"),
 	require("plugins.neotree"),
 	require("plugins.nvim-tresitter-textobjects"),

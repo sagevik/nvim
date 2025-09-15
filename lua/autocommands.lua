@@ -12,9 +12,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.py",
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+	desc = "Format buffer before save",
+})
+
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = "*.py",
 	callback = function()
+		vim.lsp.buf.format()
 		vim.cmd("LspRestart pyright")
 		vim.cmd("LspRestart pylsp")
 	end,
