@@ -93,3 +93,12 @@ vim.keymap.set("n", "<leader>cp", function()
 	vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)
 	vim.diagnostic.show(nil, 0, nil, { virtual_text = true })
 end, { desc = "Clear stuck LSP previews and restore diagnostics" })
+
+vim.keymap.set("n", "K", function()
+	vim.lsp.buf.hover({
+		border = "rounded",
+		max_height = 20,
+		max_width = 130,
+		close_events = { "CursorMoved", "BufLeave", "WinLeave", "LSPDetach" },
+	})
+end)
