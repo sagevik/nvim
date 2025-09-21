@@ -50,28 +50,28 @@ return {
 			-- desc = "[F]ind [C]onfig",
 			desc = "[S]earch [N]eovim config",
 		},
-		{
-			-- "<leader>fs",
-			"<leader>ss",
-			function()
-				local selection = utils.get_visual_selection()
-				require("fzf-lua").lgrep_curbuf({ search = selection[1] })
-			end,
-			mode = "v", --visual mode
-			-- desc = "[F]ind [S]election (current buffer)",
-			desc = "[S]earch [S]election (current buffer)",
-		},
-		{
-			-- "<leader>fS",
-			"<leader>sS",
-			function()
-				local selection = utils.get_visual_selection()
-				require("fzf-lua").live_grep({ search = table.concat(selection, "\n") })
-			end,
-			mode = "v", --visual mode
-			-- desc = "[F]ind [S]election (current project)",
-			desc = "[S]earch [S]election (current project)",
-		},
+		-- {
+		-- 	-- "<leader>fs",
+		-- 	"<leader>ss",
+		-- 	function()
+		-- 		local selection = utils.get_visual_selection()
+		-- 		require("fzf-lua").lgrep_curbuf({ search = selection[1] })
+		-- 	end,
+		-- 	mode = "v", --visual mode
+		-- 	-- desc = "[F]ind [S]election (current buffer)",
+		-- 	desc = "[S]earch [S]election (current buffer)",
+		-- },
+		-- {
+		-- 	-- "<leader>fS",
+		-- 	"<leader>sS",
+		-- 	function()
+		-- 		local selection = utils.get_visual_selection()
+		-- 		require("fzf-lua").live_grep({ search = table.concat(selection, "\n") })
+		-- 	end,
+		-- 	mode = "v", --visual mode
+		-- 	-- desc = "[F]ind [S]election (current project)",
+		-- 	desc = "[S]earch [S]election (current project)",
+		-- },
 		{
 			-- "<leader>fb",
 			"<leader>sb",
@@ -99,24 +99,24 @@ return {
 			-- desc = "[F]ind [K]eymaps",
 			desc = "[S]earch [K]eymaps",
 		},
-		{
-			-- "<leader>fw",
-			"<leader>sw",
-			function()
-				require("fzf-lua").grep_cword()
-			end,
-			-- desc = "[F]ind current [W]ord",
-			desc = "[S]earch current [W]ord",
-		},
-		{
-			-- "<leader>fW",
-			"<leader>sW",
-			function()
-				require("fzf-lua").grep_cWORD()
-			end,
-			-- desc = "[F]ind current [W]ORD",
-			desc = "[S]earch current [W]ORD",
-		},
+		-- {
+		-- 	-- "<leader>fw",
+		-- 	"<leader>sw",
+		-- 	function()
+		-- 		require("fzf-lua").grep_cword()
+		-- 	end,
+		-- 	-- desc = "[F]ind current [W]ord",
+		-- 	desc = "[S]earch current [W]ord",
+		-- },
+		-- {
+		-- 	-- "<leader>fW",
+		-- 	"<leader>sW",
+		-- 	function()
+		-- 		require("fzf-lua").grep_cWORD()
+		-- 	end,
+		-- 	-- desc = "[F]ind current [W]ORD",
+		-- 	desc = "[S]earch current [W]ORD",
+		-- },
 		{
 			-- "<leader>fd",
 			"<leader>sd",
@@ -174,6 +174,32 @@ return {
 				require("fzf-lua").lgrep_curbuf()
 			end,
 			desc = "[/] Live grep current buffer",
+		},
+		{
+			"<leader>sw",
+			function()
+				if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+					local selection = utils.get_visual_selection()
+					require("fzf-lua").lgrep_curbuf({ search = selection[1] })
+				else
+					require("fzf-lua").grep_cword()
+				end
+			end,
+			mode = { "n", "v" }, -- Applies to normal and visual modes
+			desc = "[S]earch current [W]ord or selection (current buffer)",
+		},
+		{
+			"<leader>sW",
+			function()
+				if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+					local selection = utils.get_visual_selection()
+					require("fzf-lua").live_grep({ search = table.concat(selection, "\n") })
+				else
+					require("fzf-lua").grep_cWORD()
+				end
+			end,
+			mode = { "n", "v" }, -- Applies to normal and visual modes
+			desc = "[S]earch current [W]ORD or selection (current project)",
 		},
 	},
 }
