@@ -34,6 +34,7 @@ require("lazy").setup({
 	require("plugins.lsp-signature"),
 	require("plugins.mini"),
 	require("plugins.neotree"),
+	require("plugins.nvim-colorizer"),
 	require("plugins.nvim-tresitter-textobjects"),
 	require("plugins.nvim-tresitter"),
 	require("plugins.oil"),
