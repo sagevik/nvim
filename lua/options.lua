@@ -12,6 +12,8 @@ vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
 
+vim.opt.winborder = "rounded"
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
