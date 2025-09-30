@@ -88,6 +88,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<A-j>", "<cmd>cnext<CR>zz", opts)
 vim.keymap.set("n", "<A-k>", "<cmd>cprev<CR>zz", opts)
 
+-- Format buffer
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+
 -- Clear stuck previews and restore LSP diagnostics
 vim.keymap.set("n", "<leader>cp", function()
 	vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)
