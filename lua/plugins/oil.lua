@@ -49,5 +49,6 @@ return {
 	-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 	lazy = false,
 
-	vim.keymap.set("n", "-", "<cmd>Oil --float<CR>"),
+	vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>"),
+	vim.keymap.set("n", "<leader>E", "<cmd>Oil --float<CR>"),
 }
