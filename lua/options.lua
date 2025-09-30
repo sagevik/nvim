@@ -1,5 +1,5 @@
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -37,8 +37,8 @@ vim.opt.undofile = true -- Save undo history
 vim.opt.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.smartcase = true -- smart case
 vim.opt.signcolumn = "yes" -- Keep signcolumn on by default
-vim.opt.updatetime = 250 -- Decrease update time
-vim.opt.timeoutlen = 300 -- time to wait for a mapped sequence to complete (in milliseconds)
+-- vim.opt.updatetime = 250 -- Decrease update time
+-- vim.opt.timeoutlen = 300 -- time to wait for a mapped sequence to complete (in milliseconds)
 -- vim.opt.backup = false -- creates a backup file
 -- vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 -- vim.opt.completeopt = "menuone,noselect" -- Set completeopt to have a better completion experience
@@ -60,7 +60,7 @@ vim.opt.splitright = true -- force all vertical splits to go to the right of cur
 -- vim.opt.swapfile = false -- creates a swapfile
 vim.opt.smarttab = true
 vim.opt.smartindent = true -- make indenting smarter again
-vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
+-- vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 -- vim.opt.showtabline = 2 -- always show tabs
 -- vim.opt.backspace = "indent,eol,start" -- allow backspace on
 -- vim.opt.pumheight = 10 -- pop up menu height
