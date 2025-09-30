@@ -5,7 +5,7 @@ return {
 	-- optional for icon support
 	-- dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- or if using mini.icons/mini.nvim
-	dependencies = { "echasnovski/mini.icons" },
+	-- dependencies = { "echasnovski/mini.icons" },
 	config = function()
 		require("fzf-lua").setup({
 			defaults = {
@@ -24,31 +24,31 @@ return {
 	opts = {},
 	keys = {
 		{
-			-- "<leader>ff",
-			"<leader>sf",
+			"<leader>ff",
+			-- "<leader>sf",
 			function()
 				require("fzf-lua").files()
 			end,
-			-- desc = "[F]ind [F]iles",
-			desc = "[S]earch [F]iles",
+			desc = "[F]ind [F]iles",
+			-- desc = "[S]earch [F]iles",
 		},
 		{
-			-- "<leader>fg",
-			"<leader>sg",
+			"<leader>fg",
+			-- "<leader>sg",
 			function()
 				require("fzf-lua").live_grep()
 			end,
-			-- desc = "[F]ind [G]rep",
-			desc = "[S]earch [G]rep",
+			desc = "[F]ind [G]rep",
+			-- desc = "[S]earch [G]rep",
 		},
 		{
-			-- "<leader>fc",
-			"<leader>sn",
+			"<leader>fc",
+			-- "<leader>sn",
 			function()
 				require("fzf-lua").files({ cwd = vim.fn.stdpath("config") })
 			end,
-			-- desc = "[F]ind [C]onfig",
-			desc = "[S]earch [N]eovim config",
+			desc = "[F]ind [C]onfig",
+			-- desc = "[S]earch [N]eovim config",
 		},
 		-- {
 		-- 	-- "<leader>fs",
@@ -73,31 +73,31 @@ return {
 		-- 	desc = "[S]earch [S]election (current project)",
 		-- },
 		{
-			-- "<leader>fb",
-			"<leader>sb",
+			"<leader>fb",
+			-- "<leader>sb",
 			function()
 				require("fzf-lua").builtin()
 			end,
-			-- desc = "[F]ind [B]uiltin FZF",
-			desc = "[S]earch [B]uiltin FZF",
+			desc = "[F]ind [B]uiltin FZF",
+			-- desc = "[S]earch [B]uiltin FZF",
 		},
 		{
-			-- "<leader>fh",
-			"<leader>sh",
+			"<leader>fh",
+			-- "<leader>sh",
 			function()
 				require("fzf-lua").helptags()
 			end,
-			-- desc = "[F]ind [H]elp",
-			desc = "[S]earch [H]elp",
+			desc = "[F]ind [H]elp",
+			-- desc = "[S]earch [H]elp",
 		},
 		{
-			-- "<leader>fk",
-			"<leader>sk",
+			"<leader>fk",
+			-- "<leader>sk",
 			function()
 				require("fzf-lua").keymaps()
 			end,
-			-- desc = "[F]ind [K]eymaps",
-			desc = "[S]earch [K]eymaps",
+			desc = "[F]ind [K]eymaps",
+			-- desc = "[S]earch [K]eymaps",
 		},
 		-- {
 		-- 	-- "<leader>fw",
@@ -118,48 +118,48 @@ return {
 		-- 	desc = "[S]earch current [W]ORD",
 		-- },
 		{
-			-- "<leader>fd",
-			"<leader>sd",
+			"<leader>fd",
+			-- "<leader>sd",
 			function()
 				require("fzf-lua").diagnostics_document()
 			end,
-			-- desc = "[F]ind [D]iagnostics",
-			desc = "[S]earch [D]iagnostics",
+			desc = "[F]ind [D]iagnostics",
+			-- desc = "[S]earch [D]iagnostics",
 		},
 		{
-			-- "<leader>fD",
-			"<leader>sD",
+			"<leader>fD",
+			-- "<leader>sD",
 			function()
 				require("fzf-lua").diagnostics_workspace()
 			end,
-			-- desc = "[F]ind [D]iagnostics",
-			desc = "[S]earch [D]iagnostics workspace",
+			desc = "[F]ind [D]iagnostics",
+			-- desc = "[S]earch [D]iagnostics workspace",
 		},
 		{
-			-- "<leader>fr",
-			"<leader>sr",
+			"<leader>fr",
+			-- "<leader>sr",
 			function()
 				require("fzf-lua").resume()
 			end,
-			-- desc = "[F]ind [R]esume",
-			desc = "[S]earch [R]esume",
+			desc = "[F]ind [R]esume",
+			-- desc = "[S]earch [R]esume",
 		},
 		{
-			-- "<leader>fr",
-			"<leader>s.",
+			"<leader>fr",
+			-- "<leader>s.",
 			function()
 				require("fzf-lua").oldfiles()
 			end,
-			desc = "[S]earch Recent Files",
+			desc = "[F]ind Recent Files",
 		},
 		{
-			-- "<leader>fo",
-			"<leader>so",
+			"<leader>fo",
+			-- "<leader>so",
 			function()
 				require("fzf-lua").oldfiles()
 			end,
-			-- desc = "[F]ind [O]ld Files",
-			desc = "[S]earch [O]ld Files",
+			desc = "[F]ind [O]ld Files",
+			-- desc = "[S]earch [O]ld Files",
 		},
 		{
 			"<leader><leader>",
@@ -176,7 +176,7 @@ return {
 			desc = "[/] Live grep current buffer",
 		},
 		{
-			"<leader>sw",
+			"<leader>fw",
 			function()
 				if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
 					local selection = utils.get_visual_selection()
@@ -186,10 +186,10 @@ return {
 				end
 			end,
 			mode = { "n", "v" }, -- Applies to normal and visual modes
-			desc = "[S]earch current [W]ord or selection (current buffer)",
+			desc = "[F]ind current [W]ord or selection (current buffer)",
 		},
 		{
-			"<leader>sW",
+			"<leader>fW",
 			function()
 				if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
 					local selection = utils.get_visual_selection()
@@ -199,7 +199,7 @@ return {
 				end
 			end,
 			mode = { "n", "v" }, -- Applies to normal and visual modes
-			desc = "[S]earch current [W]ORD or selection (current project)",
+			desc = "[F]ind current [W]ORD or selection (current project)",
 		},
 	},
 }
