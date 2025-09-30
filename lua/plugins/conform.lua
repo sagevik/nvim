@@ -1,11 +1,10 @@
 return {
-	-- Autoformat
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>f",
+			"<leader>lf",
 			function()
 				require("conform").format({ async = true, lsp_format = "fallback" })
 			end,
@@ -16,9 +15,6 @@ return {
 	opts = {
 		notify_on_error = false,
 		format_on_save = function(bufnr)
-			-- Disable "format_on_save lsp_fallback" for languages that don't
-			-- have a well standardized coding style. You can add additional
-			-- languages here or re-enable it for the disabled ones.
 			local disable_filetypes = { c = true, cpp = true }
 			local lsp_format_opt
 			if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -33,7 +29,6 @@ return {
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			-- Conform can also run multiple formatters sequentially
 			sh = { "shfmt" },
 			bash = { "shfmt" },
 			go = { "goimports", "gofmt" },
@@ -43,8 +38,6 @@ return {
 				"ruff_organize_imports",
 			},
 			-- rust = { "rustfmt" }, -- Deprecated, should be installed via rustup
-			--
-			-- You can use 'stop_after_first' to run the first available formatter from the list
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 		},
@@ -52,10 +45,7 @@ return {
 			ruff_format = {
 				prepend_args = { "--line-length", "120" },
 			},
-			ruff_organize_imports = {
-				-- No need for line-length here, as it only affects imports
-				-- But you can add other ruff-specific args if needed
-			},
+			ruff_organize_imports = {},
 		},
 	},
 }
