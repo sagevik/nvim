@@ -72,3 +72,21 @@ map({ 'n', 'v' }, '<leader>fW',
   end,
   { desc = "[F]ind current [W]ORD or selection (current project)" }
 )
+
+-- LSP
+map('n', 'grd', function() require("fzf-lua").lsp_definitions() end, { desc = "[G]oto [D]efinition" })
+map('n', 'grr', function() require("fzf-lua").lsp_references() end, { desc = "[G]oto [R]eferences" })
+-- Jump to the implementation of the word under your cursor.
+map('n', "gri", function() require("fzf-lua").lsp_implementations() end, { desc = "[G]oto [I]mplementation" })
+
+-- WARN: This is not Goto Definition, this is Goto Declaration.
+--  For example, in C this would take you to the header.
+map('n', "grD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
+
+map('n', "grt", function() require("fzf-lua").lsp_typedefs() end, { desc = "[G]oto [T]ype Definition" })
+
+-- Fuzzy find all the symbols in your current document.
+--  Symbols are things like variables, functions, types, etc.
+map('n', "gO", function() require("fzf-lua").lsp_document_symbols() end, { desc = "[D]ocument [S]ymbols" })
+
+map('n', "gW", function() require("fzf-lua").lsp_live_workspace_symbols() end, { desc = "[W]orkspace [S]ymbols" })
