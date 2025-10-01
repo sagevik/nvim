@@ -43,6 +43,7 @@ vim.lsp.enable({
   "bashls",
   "gopls",
   "lua_ls",
+  "pylsp",
   "ruff"
 })
 
@@ -54,7 +55,6 @@ vim.lsp.config("lua_ls", {
     }
   }
 })
-
 
 
 -- Autocomplete
