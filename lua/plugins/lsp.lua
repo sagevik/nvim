@@ -250,7 +250,7 @@ return {
             client.server_capabilities.referencesProvider = false
             client.server_capabilities.renameProvider = false
             client.server_capabilities.documentSymbolProvider = false
-            client.server_capabilities.typeDefinitionsProvider = false
+            client.server_capabilities.typeDefinitionProvider = false
         end
 
         vim.lsp.config("basedpyright", {
