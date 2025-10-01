@@ -26,6 +26,7 @@ require("oil").setup({
   },
 })
 
+
 -- Colorscheme
 require "vague".setup({ transparent = true })
 vim.cmd("colorscheme vague")
@@ -38,11 +39,22 @@ require "nvim-treesitter.configs".setup({
 
 -- LSP config
 vim.lsp.enable({
-  "lua_ls",
   "basedpyright",
+  "bashls",
   "gopls",
+  "lua_ls",
   "ruff"
 })
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" } }
+    }
+  }
+})
+
 
 
 -- Autocomplete
