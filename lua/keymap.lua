@@ -35,10 +35,10 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 
 --  See `:help wincmd` for a list of all window commands
 --  Use CTRL+<hjkl> to switch between windows
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+-- vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+-- vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+-- vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Switch buffer with shift + h/l
 vim.keymap.set("n", "<leader>l", ":bnext<CR>", opts)
@@ -85,8 +85,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Navigate quickfix list
-vim.keymap.set("n", "<A-j>", "<cmd>cnext<CR>zz", opts)
-vim.keymap.set("n", "<A-k>", "<cmd>cprev<CR>zz", opts)
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz", opts)
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz", opts)
 
 -- Format buffer
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
