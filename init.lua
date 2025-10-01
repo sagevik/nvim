@@ -72,20 +72,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  -- pattern = "*.py",
   callback = function()
     vim.lsp.buf.format()
   end,
   desc = "Format buffer before save",
-})
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "*.py",
-  callback = function()
-    vim.cmd("LspRestart pyright")
-    vim.cmd("LspRestart pylsp")
-  end,
-  desc = "Restart Pyright and pylsp after saving a Python file",
 })
 
 -- keymaps
@@ -118,7 +108,6 @@ vim.keymap.set("n", "<leader>a",
   { desc = "Add current file to QuickFix" })
 local opts = { noremap = true, silent = true }
 
--- vim.keymap.set('n', "-", "<cmd>Oil --float<CR>", { desc="Open in Oil" })
 vim.keymap.set("n", "gl", function()
   vim.diagnostic.open_float()
 end, { desc = "Open diagnostics in float" })
@@ -128,8 +117,6 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- vim.keymap.set("n", "<C-g>", "<Nop>", { silent = true })
 
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
@@ -144,13 +131,6 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open diag
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
---  See `:help wincmd` for a list of all window commands
---  Use CTRL+<hjkl> to switch between windows
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
 -- Switch buffer with shift + h/l
 vim.keymap.set("n", "<leader>l", ":bnext<CR>", opts)
 vim.keymap.set("n", "<leader>h", ":bprev<CR>", opts)
@@ -161,8 +141,6 @@ vim.keymap.set("n", "x", '"_x', opts)
 -- Keep last yanked when pasting
 vim.keymap.set("v", "p", '"_dP', opts)
 
--- vim.keymap.set("n", "<leader>p", "<cmd>put<CR>", opts)
--- vim.keymap.set("n", "<leader>P", "<cmd>put!<CR>", opts)
 vim.keymap.set("n", "bp", "<cmd>put<CR>", opts)
 vim.keymap.set("n", "ap", "<cmd>put!<CR>", opts)
 
@@ -194,18 +172,3 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position"
 -- Move selected text up and down with shift + j/k
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Clear stuck previews and restore LSP diagnostics
-vim.keymap.set("n", "<leader>cp", function()
-  vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)
-  vim.diagnostic.show(nil, 0, nil, { virtual_text = true })
-end, { desc = "Clear stuck LSP previews and restore diagnostics" })
-
--- vim.keymap.set("n", "K", function()
---   vim.lsp.buf.hover({
---     border = "rounded",
---     max_height = 20,
---     max_width = 130,
---     close_events = { "CursorMoved", "BufLeave", "WinLeave", "LSPDetach" },
---   })
--- end)
