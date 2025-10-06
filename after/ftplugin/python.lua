@@ -33,6 +33,20 @@ vim.lsp.config("pylsp", {
   },
 })
 
+vim.lsp.config("basedpyright", {
+  on_attach = {},
+  settings = {
+    basedpyright = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = 'openFilesOnly',
+        typeCheckingMode = 'strict',
+      },
+    },
+  },
+})
+
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 --   pattern = "*.py",
 --   callback = function()
