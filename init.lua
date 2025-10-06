@@ -29,15 +29,15 @@ vim.lsp.enable({
   "ruff"
 })
 
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" } }
-    }
-  }
-})
-
+-- vim.lsp.config("lua_ls", {
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = { "vim" } }
+--     }
+--   }
+-- })
+--
 
 -- Autocomplete
 vim.api.nvim_create_autocmd('LspAttach', {
