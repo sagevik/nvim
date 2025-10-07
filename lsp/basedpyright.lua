@@ -6,29 +6,29 @@ local disable_capabilities = function(client, bufnr)
   client.server_capabilities.diagnosticProvider = false
 end
 
-vim.lsp.config("pylsp", {
-  on_attach = {
-    disable_capabilities,
-  },
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          enabled = true,
-          ignore = { "E203", "W503" },
-          maxLineLength = 120,
-        },
-        pyflakes = { enabled = false },
-        flake8 = { enabled = false },
-        pylint = { enabled = false },
-        rope_autoimport = { enabled = true },
-        rope_completion = { enabled = false },
-        jedi_completion = { enabled = false },
-        jedi_definition = { enabled = false },
-      },
-    },
-  },
-})
+-- vim.lsp.config("pylsp", {
+--   on_attach = {
+--     disable_capabilities,
+--   },
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         pycodestyle = {
+--           enabled = true,
+--           ignore = { "E203", "W503" },
+--           maxLineLength = 120,
+--         },
+--         pyflakes = { enabled = false },
+--         flake8 = { enabled = false },
+--         pylint = { enabled = false },
+--         rope_autoimport = { enabled = true },
+--         rope_completion = { enabled = false },
+--         jedi_completion = { enabled = false },
+--         jedi_definition = { enabled = false },
+--       },
+--     },
+--   },
+-- })
 
 vim.lsp.config("basedpyright", {
   on_attach = {},
@@ -38,7 +38,7 @@ vim.lsp.config("basedpyright", {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
         diagnosticMode = 'openFilesOnly',
-        typeCheckingMode = 'strict',
+        typeCheckingMode = 'standard',
       },
     },
   },
