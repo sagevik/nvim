@@ -38,20 +38,7 @@ map('n', '<leader>/', function() require("fzf-lua").lgrep_curbuf() end,
   { desc = "[/] Live grep current buffer" })
 map('n', '<leader>fc', function() require "fzf-lua".files({ cwd = vim.fn.stdpath("config") }) end,
   { desc = "[S]earch [N]eovim config" })
-map('v', '<leader>fs', function()
-    local selection = get_visual_selection()
-    require "fzf-lua".lgrep_curbuf({ search = selection[1] })
-  end,
-  { desc = "[F]ind [S]election in current buffer" }
-)
-map('v', '<leader>fS', function()
-    local selection = get_visual_selection()
-    require "fzf-lua".live_grep({ search = table.concat(selection, "\n") })
-  end,
-  { desc = "[F]ind [S]election (current project)" }
-)
-map({ 'n', 'v' }, '<leader>fw',
-  function()
+map({ 'n', 'v' }, '<leader>fw', function()
     if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
       local selection = get_visual_selection()
       require("fzf-lua").lgrep_curbuf({ search = selection[1] })
@@ -61,8 +48,7 @@ map({ 'n', 'v' }, '<leader>fw',
   end,
   { desc = "[F]ind current [W]ord or selection (current buffer)" }
 )
-map({ 'n', 'v' }, '<leader>fW',
-  function()
+map({ 'n', 'v' }, '<leader>fW', function()
     if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
       local selection = get_visual_selection()
       require("fzf-lua").live_grep({ search = table.concat(selection, "\n") })
