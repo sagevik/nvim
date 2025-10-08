@@ -1,7 +1,7 @@
-vim.lsp.config("basedpyright", {
+vim.lsp.config("pyright", {
   on_attach = {},
   settings = {
-    basedpyright = {
+    python = {
       analysis = {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
