@@ -57,8 +57,8 @@ local function choose_type_checking_mode_fzf()
     prompt = "Type Checking Mode> ",
     previewer = false,
     winopts = {
-      height = 0.15,
-      width = 0.2,
+      height = 0.2,
+      width = 0.3,
       row = 0.5,
       col = 0.5,
       border = "rounded",
