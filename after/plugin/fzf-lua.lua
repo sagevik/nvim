@@ -32,7 +32,6 @@ map('n', '<leader>fk', function() require "fzf-lua".keymaps() end, { desc = "[F]
 map('n', '<leader>fd', function() require "fzf-lua".diagnostics_document() end, { desc = "[F]ind [D]iagnostics" })
 map('n', '<leader>fD', function() require "fzf-lua".diagnostics_workspace() end, { desc = "[F]ind [D]iagnostics" })
 map('n', '<leader>fr', function() require "fzf-lua".resume() end, { desc = "[F]ind [R]esume" })
-map('n', '<leader>f.', function() require "fzf-lua".oldfiles() end, { desc = "[F]ind Recent Files" })
 map('n', '<leader>fo', function() require "fzf-lua".oldfiles() end, { desc = "[F]ind [O]ld Files" })
 map('n', '<leader>/', function() require("fzf-lua").lgrep_curbuf() end,
   { desc = "[/] Live grep current buffer" })
