@@ -35,16 +35,6 @@ vim.lsp.enable({
   "ruff"
 })
 
--- vim.lsp.config("lua_ls", {
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = { "vim" } }
---     }
---   }
--- })
---
-
 -- Autocomplete
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
@@ -106,7 +96,6 @@ vim.keymap.set('n', '<leader>E', ":Oil --float<CR>")
 vim.keymap.set("n", "<leader>a",
   function() vim.fn.setqflist({ { filename = vim.fn.expand("%"), lnum = 1, col = 1, text = vim.fn.expand("%"), } }, "a") end,
   { desc = "Add current file to QuickFix" })
-local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "gl", function()
   vim.diagnostic.open_float()
