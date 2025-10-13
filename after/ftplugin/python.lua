@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   -- group = "ruff_organize_imports",
   pattern = "*.py",
   callback = function()
-    vim.fn.execute("silent !ruff check --fix --select I %")
+    vim.fn.execute("silent !ruff check --fix --select I --line-length 120 %")
   end,
 })
 
