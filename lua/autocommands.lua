@@ -26,3 +26,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   desc = "Format buffer before save",
 })
+
+-- Show function signature
+vim.api.nvim_create_autocmd("CursorHoldI", {
+  callback = function()
+    local params = vim.lsp.util.make_position_params(nil, "utf-16")
+    vim.lsp.buf_request(0, "textDocument/signatureHelp", params, function(err, result)
+      if err or not result or vim.fn.pumvisible() == 1 then return end
+      vim.lsp.util.open_floating_preview(result.signatures[1].label and { result.signatures[1].label } or {}, "markdown")
+    end)
+  end,
+})

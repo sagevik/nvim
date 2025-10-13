@@ -17,9 +17,9 @@ vim.pack.add({
   { src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },
   { src = "https://github.com/leoluz/nvim-dap-go" },
   -- Completion
-  { src = "https://github.com/L3MON4D3/LuaSnip" },
-  { src = "https://github.com/Saghen/blink.cmp" },
-  { src = "https://github.com/rafamadriz/friendly-snippets" },
+  -- { src = "https://github.com/L3MON4D3/LuaSnip" },
+  -- { src = "https://github.com/Saghen/blink.cmp" },
+  -- { src = "https://github.com/rafamadriz/friendly-snippets" },
 })
 
 require "mason".setup()
