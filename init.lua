@@ -31,8 +31,8 @@ vim.cmd(":hi statusline guibg=NONE")
 
 -- LSP config
 vim.lsp.enable({
-  -- "basedpyright",
-  "pyright",
+  "basedpyright",
+  -- "pyright",
   "bashls",
   "gopls",
   "lua_ls",
