@@ -20,6 +20,8 @@ vim.pack.add({
   { src = "https://github.com/L3MON4D3/LuaSnip" },
   { src = "https://github.com/rafamadriz/friendly-snippets" },
   { src = "https://github.com/Saghen/blink.cmp" },
+  -- VimWiki
+  { src = "https://github.com/vimwiki/vimwiki", branch = "master", type = "start" },
 })
 
 require "mason".setup()
@@ -47,3 +49,4 @@ vim.diagnostic.config({
 
 require("keymaps")
 require("autocommands")
+require("usercommands")

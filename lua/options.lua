@@ -69,3 +69,20 @@ vim.opt.autoindent = true      -- copy indent from current line when starting ne
 -- vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
 -- vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 -- vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- separate vim plugins from neovim in case vim still in use
+
+-- VimWiki
+vim.g.vimwiki_list = {
+  {
+    path = "~/dox/vimwiki/",
+    syntax = "default",
+    ext = ".wiki",
+    index = "index",
+  },
+  -- Ooptional: add more wikis
+  -- {
+    -- path = "~/some/other/wiki/",
+    -- syntax = "markdown",
+    -- ext = ".md",
+  -- },
+}
+vim.g.vimwiki_global_ext = 1 -- apply wiki syntax to all files with .wiki/.md

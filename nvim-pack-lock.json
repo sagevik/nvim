@@ -55,6 +55,10 @@
     "vague.nvim": {
       "rev": "25107de",
       "src": "https://github.com/vague2k/vague.nvim"
+    },
+    "vimwiki": {
+      "rev": "7279261",
+      "src": "https://github.com/vimwiki/vimwiki"
     }
   }
 }
