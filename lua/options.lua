@@ -71,6 +71,10 @@ vim.opt.autoindent = true      -- copy indent from current line when starting ne
 -- vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- separate vim plugins from neovim in case vim still in use
 
 -- VimWiki
+-- vim.cmd('set nocompatible') -- redundant should be enabled in Neovim by default
+vim.cmd('filetype plugin on')
+vim.cmd('syntax on')
+
 vim.g.vimwiki_list = {
   {
     path = "~/dox/vimwiki/",
@@ -78,7 +82,7 @@ vim.g.vimwiki_list = {
     ext = ".wiki",
     index = "index",
   },
-  -- Ooptional: add more wikis
+  -- Optional: add more wikis
   -- {
     -- path = "~/some/other/wiki/",
     -- syntax = "markdown",
