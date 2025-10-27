@@ -10,6 +10,7 @@ vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/mason-org/mason.nvim" },
   { src = "https://github.com/ibhagwan/fzf-lua" },
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   -- Debug
   { src = "https://github.com/mfussenegger/nvim-dap" },
   { src = "https://github.com/rcarriga/nvim-dap-ui" },
