@@ -13,4 +13,7 @@ require("oil").setup({
     max_height = 0.6,
     border = "rounded",
   },
+  view_options = {
+    show_hidden = true,
+  },
 })
