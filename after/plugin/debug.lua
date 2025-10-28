@@ -5,9 +5,9 @@ map("n", "<F6>", function() require("dap").terminate() end, { desc = "Debug: Sto
 map("n", "<F1>", function() require("dap").step_into() end, { desc = "Debug: Step Into" })
 map("n", "<F2>", function() require("dap").step_over() end, { desc = "Debug: Step Over" })
 map("n", "<F3>", function() require("dap").step_out() end, { desc = "Debug: Step Out" })
-map("n", "<leader>b", function() require("dap").toggle_breakpoint() end, { desc = "Debug: Toggle Breakpoint" })
-map("n", "<leader>bc", function() require("dap").clear_breakpoints() end, { desc = "Debug: Clear Breakpoints" })
-map("n", "<leader>B", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+map("n", "<leader>db", function() require("dap").toggle_breakpoint() end, { desc = "Debug: Toggle Breakpoint" })
+map("n", "<leader>dbc", function() require("dap").clear_breakpoints() end, { desc = "Debug: Clear Breakpoints" })
+map("n", "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
   { desc = "Debug: Set Breakpoint" })
 map("n", "<F7>", function() require("dapui").toggle() end, { desc = "Debug: See last session result." })
 

@@ -23,7 +23,7 @@ require("fzf-lua").setup({
   },
 })
 
-map('n', '<leader><leader>', function() require "fzf-lua".buffers() end, { desc = "[F]ind open Buffers" })
+map('n', '<leader>b', function() require "fzf-lua".buffers() end, { desc = "[F]ind open Buffers" })
 map('n', '<leader>ff', function() require "fzf-lua".files() end, { desc = "[F]ind [F]Files" })
 map('n', '<leader>fg', function() require "fzf-lua".live_grep() end, { desc = "[F]ind [G]rep" })
 map('n', '<leader>fb', function() require "fzf-lua".builtin() end, { desc = "[F]ind [B]uiltin FZF" })
