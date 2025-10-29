@@ -100,3 +100,60 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "Show LSP function signature" })
+
+-- Harpoon alternative builtin
+local function set_arg_position(pos)
+  local current = vim.fn.expand("%")
+  if current == "" then return end -- Bail if no file
+
+  -- Remove current if it exists anywhere
+  vim.cmd("silent! argdelete " .. current)
+
+  local argc = vim.fn.argc()
+
+  -- Remove existing at pos if it exists
+  if argc >= pos then
+    vim.cmd(pos .. "argdelete")
+  end
+
+  -- Insert at pos (after pos-1)
+  local insert_pos = pos - 1
+  vim.cmd(insert_pos .. "argadd " .. current)
+
+  -- Enforce max 4 (trim end if exceeded, though unlikely)
+  argc = vim.fn.argc()
+  while argc > 4 do
+    vim.cmd("lastargdelete")
+    argc = argc - 1
+  end
+end
+
+vim.keymap.set("n", "<leader>ah", function() set_arg_position(1) end)
+vim.keymap.set("n", "<leader>aj", function() set_arg_position(2) end)
+vim.keymap.set("n", "<leader>ak", function() set_arg_position(3) end)
+vim.keymap.set("n", "<leader>al", function() set_arg_position(4) end)
+
+vim.keymap.set("n", "<leader>a", function()
+  vim.cmd("argadd %")
+  vim.cmd("argdedup")
+end)
+
+vim.keymap.set("n", "<leader>e", function()
+  vim.cmd.args()
+end)
+
+vim.keymap.set("n", "<M-h>", function()
+  vim.cmd("silent! 1argument")
+end)
+
+vim.keymap.set("n", "<M-j>", function()
+  vim.cmd("silent! 2argument")
+end)
+
+vim.keymap.set("n", "<M-k>", function()
+  vim.cmd("silent! 3argument")
+end)
+
+vim.keymap.set("n", "<M-l>", function()
+  vim.cmd("silent! 4argument")
+end)
