@@ -133,12 +133,12 @@ vim.keymap.set("n", "<leader>aj", function() set_arg_position(2) end)
 vim.keymap.set("n", "<leader>ak", function() set_arg_position(3) end)
 vim.keymap.set("n", "<leader>al", function() set_arg_position(4) end)
 
-vim.keymap.set("n", "<leader>a", function()
+vim.keymap.set("n", "<leader>A", function()
   vim.cmd("argadd %")
   vim.cmd("argdedup")
 end)
 
-vim.keymap.set("n", "<leader>e", function()
+vim.keymap.set("n", "<leader>a", function()
   vim.cmd.args()
 end)
 
