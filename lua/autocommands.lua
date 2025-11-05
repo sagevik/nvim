@@ -30,6 +30,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- Show function signature
 vim.api.nvim_create_autocmd("CursorHoldI", {
   callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+    local supports_signature = false
+    for _, client in ipairs(clients) do
+      if client.supports_method("textDocument/signatureHelp", { bufnr = bufnr }) then
+        supports_signature = true
+        break
+      end
+    end
+    if not supports_signature then return end
+
     local params = vim.lsp.util.make_position_params(nil, "utf-16")
     vim.lsp.buf_request(0, "textDocument/signatureHelp", params, function(err, result)
       if err or not result or vim.fn.pumvisible() == 1 then return end
