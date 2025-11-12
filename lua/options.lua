@@ -80,6 +80,8 @@ vim.g.vimwiki_list = {
     syntax = "default",
     ext = ".wiki",
     index = "index",
+    auto_generate_links = 1,
+    auto_generate_tags = 1
   },
   -- Optional: add more wikis
   -- {
